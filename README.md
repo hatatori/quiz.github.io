@@ -1,2 +1,1 @@
-# quiz.github.io
-quiz
+# https://hatatori.github.io/quiz.github.io
