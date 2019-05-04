@@ -1,0 +1,173 @@
+<style>
+	*{padding: 0;margin: 0;font-family: calibri;font-size: 16;transition: 1s;}
+	body{
+		background-color: #ddd;
+	}
+
+	.questoes{
+		margin: auto;
+	}
+
+	.questoes > div{
+		max-width: 700;
+		/*max-width: 100%;*/
+		/*min-height: 250;*/
+		background-color: white;
+		margin: 20 auto;
+		padding: 20;
+		box-shadow: 0px 0px 5px #999;
+		position: relative;
+	}
+
+	button{
+		padding: 10;
+		background-color: transparent;
+		border: solid 1px #ddd;
+		outline: none;
+	}
+
+	button:hover{
+		background-color: #eee
+	}
+
+	label{
+		width: 100%;
+		margin: 3 0;
+		display: inline-table;
+	}
+
+	label > div{padding: 10; }
+
+	input:checked *{
+		background-color: red;
+	}
+
+	/*iframe{display: none;}*/
+
+
+	.verifica{width: auto;padding: 5;margin: 10;text-align: center;display: none;}
+	
+	.c{background-color: rgba(0,255,0,0.5);display: block;}
+	.e{background-color: rgba(255,0,0,0.5);display: block;}
+
+</style>
+
+<div class="questoes" id="qt">
+	<div q=0 re={repo}>
+		<p>{txt}</p>
+
+		<label><div><input value='Certo' type="radio" name='{op}' value=1> Certo</div></label>
+		<label><div><input value='Errado' type="radio" name='{op}' value=0> Errado</div></label>
+
+		<div class="verifica" id='ver'></div>
+
+		<button>Confirmar</button>
+	</div>
+</div>
+
+<!-- começo -->
+
+<textarea id="ques">cceeeecece
+
+	Mauro quer ingressar nas fileiras da Polícia Militar do remunerada, com proventos proporcionais ao tempo de Ceará, porém não poderá, pois foi licenciado do Exercito Brasileiro no comportamento regular.
+
+	As férias dos militares estaduais poderão ser divididas em 2 (dois) períodos iguais.
+
+	Fica assegurado ao Militar Estadual da ativa, quando estadual tome conhecimento, de acordo com portaria do fardado e mediante a apresentação de sua identidade Secretário de Segurança Pública e Defesa Social do militar, o acesso gratuito aos transportes rodoviários coletivos dentro da Capital, ficando estabelecida a cota Estado. máxima de 02 (dois) militares por veículo. 
+
+	A licença à gestante será concedida, mediante inspeção útil após o prazo previsto de encerramento da médica, somente quando a militar encontrar-se no autorização de licença, incorrerá nas situações de oitavo mês de gestação, não comportando qualquer desaparecimento e extravio conforme disposto na exceção.
+
+	O militar estadual na situação de agregado, por não ocupar vaga, não fica sujeito às obrigações disciplinares  poderá ser preso, por autoridade policial civil, ficando  concernentes às suas relações com outros militares e  retido na Delegacia durante o tempo necessário à  autoridades civis
+
+	E vedado ao militar estadual fazer parte de associações Corporação Militar, após o que deverá ser encaminhado de natureza sindical ou político-partidária ou mesmo de preso à autoridade militar de patente superior mais associações que não causem prejuízos para o exercício próxima da Organização Militar da Corporação a que do respectivo cargo ou função militar que ocupe na pertencer, ficando esta obrigada, sob pena de ativa.
+
+	O falecimento do militar estadual da ativa acarreta o desligamento ou exclusão do serviço ativo a partir da data da ocorrência do óbito.
+
+	Como forma de dirimir dúvidas na aplicação do EMECE, aplica-se, em qualquer caso, remunerada. a legislação em vigor para o Exercito brasileiro. 
+
+	Os militares estaduais, nos crimes militares definidos em lei, serão processados e julgados perante a Justiça Militar do Estado, em primeira instância exercitada pelos juízes de direito e Conselhos de Justiça, e em segunda instância pelo Tribunal de Justiça do Estado, enquanto não for criado o Tribunal de Justiça Militar do Estado. 
+
+	O militar estadual do Ceará tem livre acesso, aos locais sujeitos à fiscalização policial militar ou bombeiro militar e isenção de pagamento da taxa de inscrição em qualquer concurso público para ingresso na administração pública.
+</textarea>
+
+<!-- fim -->
+
+<script>
+	/*
+	op = [
+	{
+		q:"Mauro quer ingressar nas fileiras da Polícia Militar do Ceará, porém não poderá, pois foi licenciado do Exercito Brasileiro no comportamento regular.",
+		r:1
+	},
+	{
+		q:"As férias dos militares estaduais poderão ser divididas em 2 (dois) períodos iguais.",
+		r:1
+	},{
+		q:"Fica assegurado ao Militar Estadual da ativa, quando fardado e mediante a apresentação de sua identidade militar, o acesso gratuito aos transportes rodoviários coletivos dentro da Capital, ficando estabelecida a cota máxima de 02 (dois) militares por veículo.",
+		r:0
+	}
+	]
+	*/
+
+	window.onload=function(e){
+		op = []
+
+		questoes = []
+		questones = ques.innerHTML.replace(/\t/g,"").split("\n")
+		questones.map( e=>{if(e.length!=0) questoes.push(e) } )
+
+		for(i=0;i<questoes.length;i++){
+			if(i>0){
+				rr = (questoes[0][i-1] == "c") ? 1 : 0
+				op[i] = {q:questoes[i],r:rr}
+			}
+			
+			if(i == questoes.length-1){
+				console.log(op)
+				op = op.slice(1,op.length)
+				console.log(op)
+				render(op)
+			}
+		}
+
+	}
+
+	
+	function render(op){
+		t = ""
+		for(j=0;j<op.length;j++){
+			t += qt.innerHTML.replace(/{txt}/g,(j+1)+". "+op[j].q).replace(/{repo}/g,op[j].r).replace(/{op}/g,j)
+		}
+		qt.firstElementChild.remove()
+		qt.innerHTML += t
+	}
+
+	que = []
+
+	window.onclick=function(e){
+
+		if(e.target.type == "radio"){
+			o = (e.target.value == "Certo") ? 1 : 0
+			que[e.path[3].getAttribute("q")] = o
+		}
+
+		if(e.target.innerHTML == "Confirmar"){
+			questao = parseInt(e.target.parentElement.getAttribute("q"))
+			resposta = parseInt(e.target.parentElement.getAttribute("re"))
+
+			el = e.target.parentElement.querySelector("#ver")
+			r = (o == 1) ? "Certo" : "Errado"
+
+			if(o == resposta){
+				el.classList.toggle("c")
+				el.classList.remove("e")
+			}
+			else{
+				el.classList.toggle("e")
+				el.classList.remove("c")
+			}
+			
+			el.innerHTML = r
+		}
+	}
+</script>
