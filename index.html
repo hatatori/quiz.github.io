@@ -1,237 +1,112 @@
+
 <style>
-	
-	*{padding: 0;margin: 0;font-family: calibri;font-size: 16;transition: 1s;}
-
+	*{
+		padding: 0;
+		margin:0;
+		font-family: monospace;
+		/*font-family: 'Roboto', sans-serif;*/
+		vertical-align: middle;
+		transition: 0.2s;
+	}
 	body{
-		background-color: #ddd;
+		background-color: #dedede;
+		/*color: white;*/
 	}
 
-	.questoes{
-		margin: auto;
-	}
-
-	.questoes > div{
+	#ok{
+		padding: 10;
 		max-width: 700;
-		/*max-width: 100%;*/
-		/*min-height: 250;*/
-		background-color: white;
-		margin: 20 auto;
-		padding: 20;
-		box-shadow: 0px 0px 5px #999;
-		position: relative;
+		margin: auto;
+
 	}
+
+	#ok > div{
+		margin-bottom: 10;
+		background-color: white;
+		padding: 10;
+		box-shadow: 2px 2px 10px rgba(0,0,0,0.5)
+	}
+
+	#ok label{
+		display: block;
+		padding: 10;
+	}
+
+	#ok label:hover{
+		background-color: #ddd;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+
+	#ok p{
+		padding: 10
+	}
+
+	#ok input{
+		padding: 10;margin: 10;
+		display: none;
+	}
+
+	#ok input:checked + *{
+		background-color: orangered;
+		/*width: 0;
+		height: 0;*/
+		border: solid 5px orangered;
+	}
+
+	#ok label div{
+		width: 5px;
+		height: 5px;
+		background-color: white;
+		display: inline-block;
+		border-radius: 100%;
+		border: solid 5px rgba(0,0,0,0.0);
+		margin:10;
+	}
+	label:hover{background-color: rgba(0,0,0,0.2)}
 
 	button{
+		margin:10;
 		padding: 10;
 		background-color: transparent;
-		border: solid 1px #ddd;
+		border: solid 1px orangered;
+		border-radius: 5px;
 		outline: none;
 	}
 
+
 	button:hover{
-		background-color: #eee
+		background-color: orangered;
+		color: white;
+		cursor: pointer;
 	}
 
-	label{
-		width: 100%;
-		margin: 3 0;
-		display: inline-table;
+	.resposta{
+		padding: 10;
+		text-align: center;
 	}
 
-	label > div{padding: 10; }
+	.errado{background-color: rgba(255,0,0,0.2);color: black;}
+	.certo{background-color: rgba(0,255,0,0.2);color: black;}
 
-	input:checked *{
-		background-color: red;
-	}
-
-	input{vertical-align: middle;}
-
-	/*iframe{display: none;}*/
-
-
-	.verifica{width: auto;padding: 5;margin: 10;text-align: center;display: none;}
-	
-	c{background-color: rgba(0,255,0,0.2);display: block;}
-	e{background-color: rgba(255,0,0,0.2);display: block;}
-
-	textarea{display: none}
-
+	.invisible{height: 0;overflow: hidden;padding: 0;border: none;}
 </style>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, user-scalable=no">
+
 <meta charset="utf-8">
-<div class="questoes" id="qt">
-	<div>
-		<p>{txt}</p>
+<div class="invisible">
 
-		{itens}
-
-		<div class="verifica" id='ver'>{resultado}</div>
-
-		{botao_confirma}
+	<div id="estrutura">
+		<p>Questão</p>
+		<label><input type='radio' name='q0'>Valor aqui</label>
+		<!-- <div class="certo">Resposta errada</div> -->
+		<button>Verificar resposta</button>
 	</div>
+
 </div>
 
-<!-- começo -->
+<div id="ok"></div>
 
-<textarea id="ques">cceeeececeeceeececeec
-
-Mauro quer ingressar nas fileiras da Polícia Militar do Ceará, porém não poderá, pois foi licenciado do Exercito Brasileiro no comportamento regular.
-
-As férias dos militares estaduais poderão ser divididas em 2 (dois) períodos iguais.
-
-Fica assegurado ao Militar Estadual da ativa, quando fardado e mediante a apresentação de sua identidade militar, o acesso gratuito aos transportes rodoviários coletivos dentro da Capital, ficando estabelecida a cota máxima de 02 (dois) militares por veículo.
-
-A licença à gestante será concedida, mediante inspeção médica, somente quando a militar encontrar-se no oitavo mês de gestação, não comportando qualquer exceção.
-
-O militar estadual na situação de agregado, por não ocupar vaga, não fica sujeito às obrigações disciplinares concernentes às suas relações com outros militares e autoridades civis.
-
-E vedado ao militar estadual fazer parte de associações de natureza sindical ou político-partidária ou mesmo de associações que não causem prejuízos para o exercício do respectivo cargo ou função militar que ocupe na ativa.
-
-O falecimento do militar estadual da ativa acarreta o desligamento ou exclusão do serviço ativo a partir da data da ocorrência do óbito.
-
-Como forma de dirimir dúvidas na aplicação do EMECE, aplica-se, em qualquer caso, a legislação em vigor para o Exercito brasileiro.
-
-Os militares estaduais, nos crimes militares definidos em lei, serão processados e julgados perante a Justica Militar do Estado, em primeira instância exercitada pelos juízes de direito e Conselhos de Justiça, e em segunda instância pelo Tribunal de Justiça do Estado, enquanto não for criado o Tribunal de Justiça Militar do Estado.
-
-O militar estadual do Ceará tem livre acesso, aos locais sujeitos à fiscalização policial militar ou bombeiro militar e isenção de pagamento da taxa de inscrição em mrte qualquer concurso público para Administração Pública.
-
-O militar estadual ao ser matriculado nos cursos regulares previstos no EMECE, exceto os de formação, e desde que esteja no exercício de cargo ou função gratificada por período superior a 6 (seis) meses, perderá o direito à percepção do beneficio correspondente.
-
-O militar estadual, se suplente de cargo eletivo, passará automaticamente, no ato da diplomação, para a reserva remunerada, com proventos proporcionais ao tempo de contribuição.
-
-O afastamento do serviço por motivo de núpcias ou luto será concedido, no primeiro caso, se solicitado por antecipação à data do evento, e, no segundo caso, tão logo a autoridade a que estiver subordinado o militar estadual tome conhecimento, de acordo com portaria do Secretário de Segurança Pública e Defesa Social do Estado.
-
-No tocante à concessão de licenças e dispensas de serviços, o militar que não se apresentar no primeiro dia útil após o prazo previsto de encerramento da autorização de licença, incorrerá nas situações de desaparecimento e extravio conforme disposto na legislação aplicável.
-
-Somente em casos de flagrante delito, o militar estadual poderá ser preso, por autoridade policial civil, ficando retido na Delegacia durante o tempo necessário à lavratura do flagrante, comunicando-se imediatamente ao juiz competente e ao comando da respectiva Corporação Militar, após o que deverá ser encaminhado preso à autoridade militar de patente superior mais próxima da Organização Militar da Corporação a que pertencer, ficando esta obrigada, sob pena de responsabilidade funcional e penal, a manter a prisão até que deliberação judicial decida em contrário.
-
-O CB PM Salomão com IO (dez) anos de serviço e se candidatou a cargo eletivo obteve êxito na eleição e por ter sido diplomado passou para a reserva não remunerada.
-
-Os militares estaduais são submetidos a regime de tempo integral de serviço, inerente à natureza da atividade militar estadual, inteiramente devotada às finalidades e missões fundamentais das Colporações Militares estaduais, sendo compensados através de sua remuneração nonual.
-
-A transferência para a reforma, a pedido, será concedida, mediante requerimento do militar estadual que conte com 53 (cinquenta e três) anos de idade e 30 (trinta) anos de contribuição, dos quais no mínimo 25 (vinte e cinco) anos de contribuição militar estadual ao Sistema Unico de Previdência Social dos Servidores.
-
-O 1º Sargento PM Mauro que se encontra no atual cargo a OI (um) ano tem precedência funcional sobre 0 10 Sargento BM Salomão que se encontra no atual cargo a 03 (três) anos.
-
-Estão sujeitos ao Código disciplinar os militares do serviço ativo, bem como os inativos, excluindo-se, dentre outros; os militares reformados.
-
-E dever ético, emanado dos valores militares estaduais e que conduzem a atividade profissional sob o signo da retidão moral e que conduz a atividade profissional; o militar estadual não pleitear para si, por meio de terceiros, cargo ou função que esteja sendo exercido por outro militar do Estado.
-
-Cabe ao executante que exorbitar no cumprimento da ordem recebida à responsabilidade pelo abuso ou excesso que cometer, salvo se o fato é cometido sob coação irresistível ou sob estreita obediência à ordem, não manifestamente ilegal, de superior hierárquico, quando só será punível o autor da coação ou da ordem.
-
-Transgressão disciplinar é a infração administrativa caracterizada pela violação dos deveres militares, cominando ao infrator as sanções previstas neste Código, com prejuízo das responsabilidades penal e civil.
-
-A disciplina e o comportamento do militar estadual estão sujeitos à fiscalização, disciplina e orientação pela Corregedoria Geral de Disciplina dos Orgãos de Segurança Pública e Sistema Penitenciário, na fonna da lei.
-
-É considerada transgressão grave: empregar subordinado ou servidor civil, ou desviar qualquer meio material ou financeiro sob sua responsabilidade ou não, para a execução de atividades diversas daquelas para as quais foram destinadas, em proveito próprio ou de outrem.
-
-É considerada transgressão média: fazer, diretamente ou por intermédio de outrem, agiotagem ou transação pecuniária envolvendo assunto de serviço, bens da administração pública ou material cuja comercialização seja proibida.
-
-A permanência disciplinar é a sanção em que o transgressor ficará na OPM ou OBM, sem estar circunscrito a determinado compartimento.
-
-O militar do Estado sob permanência disciplinar não comparecerá aos atos de instrução e serviço, internos e extemos.
-
-Ao Governador do Estado compete conhecer da custódia disciplinar em grau de recurso, quando tiver sido aplicada pelo Controlador Geral de Disciplina dos Orgãos de Segurança Pública e Sistema Penitenciário.
-
-A demissão será aplicada a oficial, dentre outras situações, quando for condenado na Justiça Comum ou Militar a pena privativa de liberdade por tempo superior a 02 (dois) anos, por sentença passada em julgado.
-
-A comunicação disciplinar será formal, tanto quanto possível, deve ser clara, concisa e precisa, contendo os dados capazes de identificar as pessoas ou coisas envol- vidas, o local, a data e a hora do fato, além de caracterizar as circunstâncias que o envolveram, bem como as alegações do faltoso, quando presente e ao ser interpelado pelo signatário das razões da transgressão, sem tecer comentários ou opiniões pessoais.
-
-Não haverá aplicação de sanção disciplinar, quando o militar estadual tiver cometido à falta em preservação da ordem pública ou de interesse coletivo.
-
-O enquadramento disciplinar é a descrição da transgressão cometida, dele devendo constar, resumidamente: indicação da ação ou omissão que originou a transgressão; tipificação da transgressão disciplinar; alegações de defesa do agressor; classificação do comportamento policial-militar em que o punido permaneça ou ingresse; discriminação, em incisos e artigos, das causas de justificação ou das circunstâncias atenuantes e ou wravantes; decisão da autoridade impondo, ou não, a sanção.
-
-As faltas médias são puníveis com permanência disci- plinar de até 8 (oito) dias e, na reincidência, com permanência disciplinar de até 15(quinze) dias.
-
-Na ocorrência de mais de uma transgressão, sem conexão entre elas, serão impostas as sanções correspondentes isoladamente; em caso contrário, quando forem praticadas de forma conexa, as de menor gravidade serão consideradas como circunstâncias agravantes da transgressão principal.
-
-
-
-</textarea>
-
-<!-- fim -->
-
-<script>
-	q = ques.innerHTML.replace(/\t/g,"")
-	gabarito = q.split("\n")[0].split("")
-	t = ""
-
-	function Questao(numero_da_questao,enunciado,op,resposta,opcao_escolhida){
-
-		this.numero_da_questao = numero_da_questao
-		this.enunciado = enunciado
-		this.op = op
-		this.resposta = resposta
-		this.opcao_escolhida = opcao_escolhida
-		this.plus = 0
-
-		this.itens = function(){
-			return this.op.map(e=>{return "<label><div><input type=radio value='"+(this.plus++)+"' name="+this.numero_da_questao+">"+e+"</div></label>"}).join("\n")
-		}
-
-		this.botao = function(){
-			return "<button p="+(this.numero_da_questao-1)+" r="+this.resposta+">Confirmar</button>"
-		}
-
-	
-	}
-	
-
-	e = []
-
-	q = q.split("\n\n")
-
-	gabarito = gabarito.join("").replace(/c/g,1).replace(/e/g,0).split("").map(e=>{return parseInt(e)})
-
-	for(i=0;i<gabarito.length;i++){
-		e[i] = new Questao()
-		e[i].enunciado = q[i+1]
-		e[i].op = [" Certo"," Errado"]
-		e[i].resposta = gabarito[i]
-		e[i].opcao_escolhida = 1
-		e[i].numero_da_questao = i+1
-	}
-
-	a = qt.innerHTML
-	t = ""
-	
-	for(i=0;i<gabarito.length;i++){
-		t += a
-		t = t.replace(/{txt}/g, g=>{return (i+1)+". "+e[i].enunciado})
-		t = t.replace(/{itens}/g, g=>{return e[i].itens()})
-		t = t.replace(/{botao_confirma}/g, g=>{return e[i].botao() })
-	}
-	
-	qt.innerHTML = t
-	n = []
-	window.onclick=function(g){
-
-		if(g.target.type == 'radio'){
-
-			a = n[g.target.name-1] = parseInt(g.target.value)
-
-			b = e[g.target.name-1].resposta
-
-			console.log(e[g.target.name-1])
-		}
-		
-
-		if(g.target.innerHTML == "Confirmar"){
-
-			vp = parseInt(g.target.getAttribute("p"))
-			vr = parseInt(g.target.getAttribute("r"))
-
-			if(a!=b){
-				ver[vp].innerHTML = "<c>Resposta correta<c>"
-				ver[vp].style.display="block"
-			}
-			else{
-				ver[vp].innerHTML = "<e>Resposta errada<e>"
-				ver[vp].style.display="block"
-			}
-
-		}
-	}
-
-
-
-</script>
+<script src='quiz.js'></script>
