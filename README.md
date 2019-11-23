@@ -1,1 +1,1 @@
-# https://hatatori.github.io/quiz.github.io
+# https://hatatori.github.io/quiz
