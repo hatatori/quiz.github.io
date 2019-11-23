@@ -44,7 +44,7 @@ respostas = {}
 
 	function cria_questao(a){
 		div = document.createElement("div")
-		div.innerHTML += "<p>"+a+") "+questoes[a].pergunta+"</p>"
+		div.innerHTML += "<p>"+(a+1)+") "+questoes[a].pergunta+"</p>"
 		div.innerHTML += setar_items(questoes[a].items)
 		div.innerHTML += "<button class='invisible' onclick=verifica_reposta("+a+")>Verificar Resposta</button>"
 		div.innerHTML += "<div id='alternativa"+a+"' class='resposta errado invisible'>resposta</div>"
