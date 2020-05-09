@@ -1,0 +1,131 @@
+*{
+	padding: 0;
+	margin:0;
+	font-family: calibri;
+	/*vertical-align: middle;*/
+	transition: 0.2s;
+
+	
+}
+
+.cantin{
+	position: absolute;
+	top: 10;
+	left: 10;
+	margin: auto;
+}
+
+.math{
+	font-size: 1.2em;
+	margin: auto;
+	text-align: center;
+	font-style: italic;
+	/*text-decoration: underline;*/
+}
+
+body{
+	background-color: #dedede;
+	/*color: white;*/
+	overflow-x: hidden;
+	font-size: 15
+}
+
+.tleft{text-align: left;background-color: red}
+
+.l20{line-height: 30px}
+
+#ok{
+	padding: 10;
+	max-width: 700;
+	margin: auto;
+
+}
+
+#ok > div{
+	margin-bottom: 10;
+	background-color: white;
+	padding: 20;
+	box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+	position: relative;
+}
+
+#ok label{
+	display: block;
+	padding: 10;
+
+}
+
+#ok label:hover{
+	background-color: #ddd;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+#ok p{
+	padding: 10
+}
+
+#ok input{
+	padding: 10;margin: 10;
+	display: none;
+
+}
+
+
+
+#ok input:checked + *{
+	background-color: orangered;
+	border: solid 5px orangered;
+}
+
+#ok label div{
+	width: 5px;
+	height: 5px;
+	background-color: white;
+	display: inline-block;
+	border-radius: 100%;
+	border: solid 5px rgba(0,0,0,0.0);
+	margin:10;
+	vertical-align: middle;
+}
+label:hover{background-color: rgba(0,0,0,0.2)}
+
+button{
+	margin:10;
+	padding: 10;
+	background-color: transparent;
+	border: solid 1px orangered;
+	border-radius: 5px;
+	outline: none;
+}
+
+
+button:hover{
+	background-color: orangered;
+	color: white;
+	cursor: pointer;
+}
+
+.resposta{
+	padding: 10;
+	/*text-align: center;*/
+}
+
+.estrutura{
+	max-width: 70%;
+	padding: 10;
+	background-color: white;
+	margin: 10;
+	margin:auto;
+}
+
+
+
+.errado{background-color: rgba(255,0,0,0.2);color: black;}
+.certo{background-color: rgba(0,255,0,0.2);color: black;}
+
+.invisible{height: 0;overflow: hidden;padding: 0;border: none;}
+
+h1,h2,h3{display: inline-block;}
+
+img{max-width: 100%;margin:auto;vertical-align: middle;}
